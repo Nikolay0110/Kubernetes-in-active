@@ -21,3 +21,14 @@ docker tag kubia nikolay0110/kubia
 docker login
 docker push nikolay0110/kubia
 ```
+
+2. Настройка кластера в Minikube
+Установка minikube
+```bash
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube_latest_amd64.deb
+sudo dpkg -i minikube_latest_amd64.deb
+```
+Получить kubeconfig для кластера для доступа снаружи(я настроил доступ со своего ПК в киртуальную машину)
+```bash
+minikube kubectl -- config view --minify --flatten > ~/minikube-config.yaml
+```
