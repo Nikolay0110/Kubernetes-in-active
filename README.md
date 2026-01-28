@@ -11,7 +11,13 @@ docker build -t kubia .
 docker run --name kubia-container -p 8080:8080 -d kubia
 ```
 
-1.2 Назначить образу другой тег
+1.2 Назначить образу другой тег(фактически создается копия образа с новым тегом, так как он имеет тот же идентификатор образа, что и у оригинала)
 ```bash
 docker tag kubia nikolay0110/kubia
+```
+
+1.3 Загрузка образа в Registry DockerHub
+```bash
+docker login
+docker push nikolay0110/kubia
 ```
