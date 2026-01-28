@@ -10,3 +10,8 @@ docker build -t kubia .
 ```bash
 docker run --name kubia-container -p 8080:8080 -d kubia
 ```
+
+1.2 Назначить образу другой тег
+```bash
+docker tag kubia nikolay0110/kubia
+```
