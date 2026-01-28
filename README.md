@@ -5,3 +5,8 @@
 ```bash
 docker build -t kubia .
 ```
+
+1.1 Запуск контейнера из образа
+```bash
+docker run --name kubia-container -p 8080:8080 -d kubia
+```
