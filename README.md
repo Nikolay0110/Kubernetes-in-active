@@ -32,3 +32,39 @@ sudo dpkg -i minikube_latest_amd64.deb
 ```bash
 minikube kubectl -- config view --minify --flatten > ~/minikube-config.yaml
 ```
+
+3. Запуск нашего приложения на Node.js в кластере через командную оболочу
+```bash
+kubectl run kubia --image=nikolay0110/kubia --port=8080
+```
+но лучше создать деплоймент нашего приложения, так контроллер Deployment будет следить за нашим приложением и приводить его к указанному состоянию
+```bash
+kubectl create deployment kubia --image=nikolay0110/kubia --port=8080
+```
+
+4. Создание объекта Service - балансировщик нагрузки, для доступа к сервисы снаружи кластера
+`Примечание!` - Minikube не поддерживает сервис LoadBalancer
+```bash
+kubectl expose deployment kubia --type=NodePort --name kubia-http --port=8080
+minikube service kubia-http
+```
+
+Посмотреть описание Deployment и Service(LoadBalancer)
+```bash
+kubectl describe deployment kubia
+kubectl describe service kubia-http
+```
+
+5. Горизонатльное масштабирования приложения через указание количества реплик нашему деплойменту
+```bash
+kubectl scale deployment kubia --replicas=3
+```
+
+
+
+
+
+
+
+
+
