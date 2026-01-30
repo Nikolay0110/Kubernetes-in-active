@@ -60,7 +60,10 @@ kubectl describe service kubia-http
 kubectl scale deployment kubia --replicas=3
 ```
 
-
+6. Вывод дополнительной информации о поде
+```bash
+kubectl get pod -o wide
+```
 
 
 
