@@ -1,4 +1,4 @@
-# Kubernetes в действии - Марко Лукош
+# Kubernetes в действии - Марко Лукша
 Этой мой проект по изучению Kubernetes основанный на книге указанной выше.
 
 1. Сборка образа из Dockerfile
@@ -65,8 +65,21 @@ kubectl scale deployment kubia --replicas=3
 kubectl get pod -o wide
 ```
 
-
-
+7. Развернуть панель управления и мониторинга Kite
+```yml
+version: '3.9'
+services:
+  kite:
+    image: ghcr.io/zxh326/kite:latest
+    container_name: kite-dash
+    ports:
+      - "8888:8080"
+    restart: unless-stopped
+```
+Чтобы kite мог достучаться до minikube, нужно присоеденить его к сети minikube
+```bash
+docker network connect minikube kite-dash
+```
 
 
 
