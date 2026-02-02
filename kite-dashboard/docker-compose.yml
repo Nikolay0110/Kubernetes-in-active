@@ -1,0 +1,15 @@
+version: '3.9'
+services:
+  kite:
+    image: ghcr.io/zxh326/kite:latest
+    container_name: kite-dash
+    ports:
+      - "8888:8080"
+    restart: unless-stopped
+    networks:
+      - minikube
+
+networks:
+  minikube:
+    external: true
+    name: minikube

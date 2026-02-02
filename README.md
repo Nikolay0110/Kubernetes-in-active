@@ -66,17 +66,10 @@ kubectl get pod -o wide
 ```
 
 7. Развернуть панель управления и мониторинга Kite
-```yml
-version: '3.9'
-services:
-  kite:
-    image: ghcr.io/zxh326/kite:latest
-    container_name: kite-dash
-    ports:
-      - "8888:8080"
-    restart: unless-stopped
-```
-Чтобы kite мог достучаться до minikube, нужно присоеденить его к сети minikube
+
+[docker-compose.yml](kite-dashboard/docker-compose.yml)
+
+Чтобы kite мог достучаться до minikube, нужно присоеденить его к сети minikube, но это я уже указал в docker-compose.yml
 ```bash
 docker network connect minikube kite-dash
 ```
