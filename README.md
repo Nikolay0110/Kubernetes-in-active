@@ -74,6 +74,44 @@ kubectl get pod -o wide
 docker network connect minikube kite-dash
 ```
 
+8. Узнать какие поля возможны у объекта для его создания или описания и деплоя
+```bash
+kubectl explain pods
+# и для детального изучения например
+kubectl explain pods.spec
+```
+
+9. Создание пода из манифеста
+```bash
+kubectl create -f kubia-manual.yaml
+```
+
+10. Получить описание объекта в виде YAML или JSON
+```bash
+kubectl get pod kubia-manual -o yaml
+kubectl get pod kubia-manual -o json
+```
+
+11. Просмотреть логи пода
+```bash
+kubectl logs kubia-manual
+# в режиме реального времени
+kubectl logs -f kubia-manual
+```
+**Если под многоконтейнерный, то просмотр логов отдельного контейнера делается следующим образом**
+```bash
+kubectl logs kubia-manual -c kubia  # где флаг -c означает, что можно указать имя контейнера
+```
+
+12. Перенаправление портов пода на порт ноды
+В данном примере мы перенаправляем порт приложения 8080 на порт ноды 8082
+```bash
+kubectl port-forward kubia-manual 8082:8080
+```
+
+
+
+
 
 
 

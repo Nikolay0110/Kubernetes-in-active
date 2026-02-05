@@ -1,0 +1,11 @@
+apiVersion: v1                # Версия API Kubernetes
+kind: Pod                     # тип описываемого объекта
+metadata:
+  name: kubia-manual          # имя объекта(пода)
+spec:
+  containers:
+  - image: nikolay0110/kubia  # образ для создания контейнера
+    name: kubia               # имя контейнера
+    ports:
+    - containerPort: 8080    # порт, на котором слушает приложение
+      protocol: TCP
