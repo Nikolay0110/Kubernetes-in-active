@@ -111,7 +111,7 @@ kubectl logs kubia-manual -c kubia  # где флаг -c означает, чт�
 kubectl port-forward kubia-manual 8082:8080
 ```
 
-13. Просмтореть поды с лейблами
+13. Получить список подов с фильтрацией по селекторам лейблов
 ```bash
 kubectl get pods --show-labels
 
@@ -129,6 +129,8 @@ kubectl get pods -l creation_method!=manual
 kubectl get pods -l 'env in (prod,debug)'
 # или на оборот
 kubectl get pods -l 'env not in (prod,debug)'
+# можно также через запятую указывать селекторы лейблов и их значений
+kubectl get pods -l env=prod,creation_method=manual
 ```
 
 14. Добавить лейбл уже запущенному поду
