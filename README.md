@@ -28,21 +28,21 @@ docker push nikolay0110/kubia
 curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube_latest_amd64.deb
 sudo dpkg -i minikube_latest_amd64.deb
 ```
-Получить kubeconfig для кластера для доступа снаружи(я настроил доступ со своего ПК в киртуальную машину)
+Получить kubeconfig для кластера для доступа снаружи(я настроил доступ со своего ПК в виртуальную машину)
 ```bash
 minikube kubectl -- config view --minify --flatten > ~/minikube-config.yaml
 ```
 
-3. Запуск нашего приложения на Node.js в кластере через командную оболочу
+3. Запуск нашего приложения на Node.js в кластере через командную оболочку
 ```bash
 kubectl run kubia --image=nikolay0110/kubia --port=8080
 ```
-но лучше создать деплоймент нашего приложения, так контроллер Deployment будет следить за нашим приложением и приводить его к указанному состоянию
+Но лучше создать деплоймент нашего приложения, так контроллер Deployment будет следить за нашим приложением и приводить его к указанному состоянию
 ```bash
 kubectl create deployment kubia --image=nikolay0110/kubia --port=8080
 ```
 
-4. Создание объекта Service - балансировщик нагрузки, для доступа к сервисы снаружи кластера
+4. Создание объекта Service - балансировщик нагрузки, для доступа к сервису снаружи кластера
 `Примечание!` - Minikube не поддерживает сервис LoadBalancer
 ```bash
 kubectl expose deployment kubia --type=NodePort --name kubia-http --port=8080
@@ -55,7 +55,7 @@ kubectl describe deployment kubia
 kubectl describe service kubia-http
 ```
 
-5. Горизонатльное масштабирования приложения через указание количества реплик нашему деплойменту
+5. Горизонтальное масштабирования приложения через указание количества реплик нашему деплойменту
 ```bash
 kubectl scale deployment kubia --replicas=3
 ```
@@ -69,7 +69,7 @@ kubectl get pod -o wide
 
 [docker-compose.yml](kite-dashboard/docker-compose.yml)
 
-Чтобы kite мог достучаться до minikube, нужно присоеденить его к сети minikube, но это я уже указал в docker-compose.yml
+Чтобы kite мог достучаться до minikube, нужно присоединить его к сети minikube, но это я уже указал в docker-compose.yml
 ```bash
 docker network connect minikube kite-dash
 ```
@@ -115,13 +115,13 @@ kubectl port-forward kubia-manual 8082:8080
 ```bash
 kubectl get pods --show-labels
 
-# с фильтром по меткам и ключ дейбла как отдельный столбец в выводе
+# с фильтром по меткам и ключ лейбла как отдельный столбец в выводе
 kubectl get pods -L creation_method,env   # БЕЗ ПРОБЕЛА МЕЖДУ МЕТКАМИ
 # получить поды с фильтром по лейблу
 kubectl get pods -l creation_method=manual
 # получить список подов с лейблом, каким бы ни было его значение
 kubectl get pods -l env
-# или получить спикок подов которые не имеют указанного лейбла 
+# или получить список подов которые не имеют указанного лейбла 
 kubectl get pods -l '!env'
 # получить список подов с лейблом значение которого может быть любым кроме указанного
 kubectl get pods -l creation_method!=manual
