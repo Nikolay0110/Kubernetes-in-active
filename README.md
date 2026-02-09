@@ -140,6 +140,10 @@ kubectl label pod kubia-manual creation_method=manual
 kubectl label pod kubia-manual-v2 env=debug --overwrite
 ```
 
-
-
+15. Добавить лейбл к ноде, чтобы в дальнейшем указывать при раскатке деплоймента или запуске пода конкретный селектор лейбла, например наличие на ноде GPU, это лучше, чем указывать конкретную ноду
+```bash
+kubectl label node node-name gpu=true
+# и получить список нод с указанным лейблом в таблице
+kubectl get node -L gpu -l gpu=true
+```
 
