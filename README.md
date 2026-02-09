@@ -147,3 +147,33 @@ kubectl label node node-name gpu=true
 kubectl get node -L gpu -l gpu=true
 ```
 
+Если под нужно запланировать на определенной ноде, то нужно указать селектор - `kubernetes.io/hostname: фактическое имя хоста`  
+Пример:  
+```yaml
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: "minikube"    # или какое у вас фактическое имя нужной ноды  
+```
+
+16. Получить все пространства имен в кластере - Namespace
+```bash
+kubectl get ns
+# получить список подов в определенном namespace
+kubectl get pods --namespace kube-system
+# или в сокращенном виде
+kubectl get pods -n kube-system
+```
+
+17. 
+```bash
+
+```
+
+
+
+
+
+
+
+
+
