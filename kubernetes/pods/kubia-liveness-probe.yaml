@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kubia-liveness
+spec:
+  containers:
+  - image: nikolay0110/kubia-unhealthy:latest
+    name: kubia
+    livenessProbe:    # проверка работоспособности контейнера, которая выполнить http get запрос
+      httpGet:
+        path: /       # путь в HTTP запросе
+        port: 8080
