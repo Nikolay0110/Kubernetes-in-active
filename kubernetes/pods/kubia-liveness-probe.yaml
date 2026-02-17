@@ -2,6 +2,8 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: kubia-liveness
+  labels:
+    app: kubia-http
 spec:
   containers:
   - image: nikolay0110/kubia-unhealthy:latest

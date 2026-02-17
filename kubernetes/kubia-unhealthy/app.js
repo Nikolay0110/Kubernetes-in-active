@@ -3,9 +3,9 @@ const os = require('os');
 
 console.log('Kubia сервер запущен...');
 
-let requestCount = 0;
+var requestCount = 0;
 
-let handler = function(request, response) {
+var handler = function(request, response) {
     console.log('Received request from ' + request.connection.remoteAddress);
     requestCount++;
     if (requestCount > 5) {
@@ -17,5 +17,5 @@ let handler = function(request, response) {
     response.end("You've hit " + os.hostname() + "\n");
 };
 
-let www = http.createServer(handler);
+var www = http.createServer(handler);
 www.listen(8080);
