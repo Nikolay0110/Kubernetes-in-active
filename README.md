@@ -46,6 +46,8 @@ kubectl create deployment kubia --image=nikolay0110/kubia --port=8080
 `Примечание!` - Minikube не поддерживает сервис LoadBalancer
 ```bash
 kubectl expose deployment kubia --type=NodePort --name kubia-http --port=8080
+
+узнать внешний интерфейс и порт прослушивания приложения
 minikube service kubia-http
 ```
 
@@ -164,16 +166,25 @@ kubectl get pods --namespace kube-system
 kubectl get pods -n kube-system
 ```
 
-17. 
+17. Получить список контроллеров репликации
 ```bash
-
+kubectl get rc
 ```
 
+18. Изменить на лету шаблон пода в контроллере репликации
+```bash
+kubectl edit rc kubia
+```
+# но, лучше так не делать, все рекомендуется делать через манифесты, это скорее подойдет для оперативного вмешательства в работу кластера
 
+19. Скейл репликации вручную
+```bash
+kubectl scale rc kubia --replicas=10
+```
 
-
-
-
-
+20. Удаление контроллера репликации, но с сохранением подов за которыми он следил
+```bash
+kubectl delete rc kubia --cascade=false
+```
 
 
