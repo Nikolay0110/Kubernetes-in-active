@@ -187,4 +187,7 @@ kubectl scale rc kubia --replicas=10
 kubectl delete rc kubia --cascade=false
 ```
 
-
+21. Получить список ReplicaSet - это набор контроллеров репликации
+```bash
+kubectl get rs
+```
