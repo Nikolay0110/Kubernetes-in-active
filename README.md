@@ -149,6 +149,11 @@ kubectl label node node-name gpu=true
 kubectl get node -L gpu -l gpu=true
 ```
 
+**Удалить лейбл**
+```bash
+kubectl label node minikube gpu-
+```
+
 Если под нужно запланировать на определенной ноде, то нужно указать селектор - `kubernetes.io/hostname: фактическое имя хоста`  
 Пример:  
 ```yaml
@@ -193,3 +198,20 @@ kubectl get rs
 # удалить контроллер ReplicaSet
 kubectl delete rs kubia
 ```
+
+# DaemonSet
+Запуск ровно одного модуля на каждом узле с помощью набора демонов DaemonSet
+
+**Получить список DaemonSet**
+```bash
+kubectl get ds
+```
+**Удалить контроллер DaemonSet**
+```bash
+kubectl delete ds ssd-monitor
+```
+
+
+
+
+
