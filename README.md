@@ -190,4 +190,6 @@ kubectl delete rc kubia --cascade=false
 21. Получить список ReplicaSet - это набор контроллеров репликации
 ```bash
 kubectl get rs
+# удалить контроллер ReplicaSet
+kubectl delete rs kubia
 ```
