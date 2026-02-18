@@ -199,10 +199,10 @@ kubectl get rs
 kubectl delete rs kubia
 ```
 
-# DaemonSet
+## DaemonSet
 Запуск ровно одного модуля на каждом узле с помощью набора демонов DaemonSet
 
-**Получить список DaemonSet**
+**Получить список контроллеров DaemonSet**
 ```bash
 kubectl get ds
 ```
@@ -211,7 +211,16 @@ kubectl get ds
 kubectl delete ds ssd-monitor
 ```
 
+## Job
+Запуск моделей, выполняющих одну заканчиваемую задачу
 
+**Получить список Jobs**
+```bash
+kubcetl get jobs
+```
 
-
+**Получить список CronJob**
+```bash
+kubcetl get cronjob
+```
 
