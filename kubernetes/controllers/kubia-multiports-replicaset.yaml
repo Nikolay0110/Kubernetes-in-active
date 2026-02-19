@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: kubia-apps
+---
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: kubia
+  namespace: kubia-apps
+spec:
+  replicas: 3
+  selector:
+    matchExpressions:   # этот селектор требует, чтобы под, содержал метку с ключом 'app'
+    - key: app
+      operator: In    # In - совпадение; NotIn - не должен совпадать; Exists - совпадение по ключу, значение не важно; DoesNotExists - модуль не должен содержать метку с указанным ключом
+      values:   # значение метки должно быть kubia
+        - kubia
+#    matchLabels:
+#      app: kubia
+  template:
+    metadata:
+      labels:
+        app: kubia
+    spec:
+      containers:
+      - name: kubia
+        image: nikolay0110/kubia-multiports
