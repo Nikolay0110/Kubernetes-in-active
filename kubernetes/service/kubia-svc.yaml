@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: kubia
+spec:
+  type: NodePort
+  ports:
+    - port: 80    # порт на котором будет доступна служба
+      targetPort: 8080    # порт внутри контейнера, куда служба будет перенаправлять обращения клиентов
+  selector:
+    app: kubia    # все поды с селектором `app=kubia` будут частью этой службы
