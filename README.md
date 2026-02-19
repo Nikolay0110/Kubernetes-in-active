@@ -244,7 +244,11 @@ kubectl exec kubia-btc5b -- curl -s http://10.108.6.148
 **Сервисы так же могут обрабатывать подключения по одному ip на несколько портов**  
 Здесь создаю именованные порты - [kubia-multiports-svc.yaml](kubernetes/service/kubia-multiports-svc.yaml)
 
-
+**Запрос к приложению через под, в не стандартном пространстве имен**
+```bash
+# перед командой узнать ip сервиса в нужной неймспейсе и узнать имя пода
+kubectl exec kubia-49pmt --namespace kubia-apps -- curl -s http://10.102.130.8:443
+```
 
 
 
