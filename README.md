@@ -271,3 +271,6 @@ curl http://kubia-multiports.default.svc.cluster.local
 ```bash
 curl http://kubia-multiports
 ```
+
+## Несколько компонентов Kubernetes в одном манифесте
+Для создания нескольких компонентов Kubernetes в одном манифесте нужно отделить эти части описания через `---`
