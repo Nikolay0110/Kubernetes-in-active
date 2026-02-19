@@ -250,5 +250,8 @@ kubectl exec kubia-btc5b -- curl -s http://10.108.6.148
 kubectl exec kubia-49pmt --namespace kubia-apps -- curl -s http://10.102.130.8:443
 ```
 
-
+**ENV пода**
+```bash
+kubectl exec kubia-43df5 env
+```
 
