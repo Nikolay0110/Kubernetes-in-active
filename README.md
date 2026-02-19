@@ -255,3 +255,19 @@ kubectl exec kubia-49pmt --namespace kubia-apps -- curl -s http://10.102.130.8:4
 kubectl exec kubia-43df5 env
 ```
 
+**Войти в интерактивный режим оболочки терминала в поде**
+```bash
+kubectl exec -it kubia-43df5 bash
+```
+
+**DNS**
+Получить доступ к нашему приложению через FQDN, а не через ip
+```bash
+curl http://kubia-multiports.default.svc.cluster.local
+```
+Где: `kubia-multiports` - имя службы, `default` - неймспейс, `svc.cluster.local` - суффикс кластера
+
+Или просто
+```bash
+curl http://kubia-multiports
+```
